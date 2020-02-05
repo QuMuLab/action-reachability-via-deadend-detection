@@ -1,5 +1,5 @@
 # Action Reachability via Deadend Detection
-Research project to explore the use of deadend detection techniques for testing action reachability.
+Research project to explore the use of deadend detection techniques for testing action reachability
 
 ## Deliverables with schedule:
 * Recall and self-learning of classical automated planning; due on January 6th
