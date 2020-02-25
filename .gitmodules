@@ -1,0 +1,4 @@
+[submodule "pddl-parser-2"]
+	path = pddl-parser-2
+	url = https://github.com/boompig/pddl-parser-2.git
+	branch = master
