@@ -12,6 +12,7 @@ function analyzePlan() {
              contentType: 'application/json',
              data: JSON.stringify({"domain": domText, "problem": probText})})
         .done(function (res) {
+                console.log("server sucesses", res)
                 if ('output' in res)
                     window.toastr.success('Analysis complete!');
                 else
@@ -21,6 +22,7 @@ function analyzePlan() {
 
             }).fail(function (res) {
                 window.toastr.error('Error: Malformed URL?');
+                console.log('server fail', res)
             });
 }
 
