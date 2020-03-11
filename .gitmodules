@@ -1,8 +1,1 @@
-[submodule "pddl-parser-2"]
-	path = pddl-parser-2
-	url = https://github.com/boompig/pddl-parser-2.git
-	branch = master
-[submodule "action-reachability-via-deadend-detection"]
-	path = action-reachability-via-deadend-detection
-	url = https://github.com/QuMuLab/action-reachability-via-deadend-detection.git
-	branch = master
+
