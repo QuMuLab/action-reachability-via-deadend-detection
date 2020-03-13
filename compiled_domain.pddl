@@ -19,7 +19,10 @@
             )
         :effect
             (and
-                (newpred)
+                (not
+                    (p)
+                )
+                (q)
             )
     )
     (:action toggle2
@@ -44,7 +47,7 @@
             )
         :effect
             (and
-                (g)
+                (newpred)
             )
     )
 )
