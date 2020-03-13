@@ -53,26 +53,26 @@ def doit(solution, outfile):
     #     return json.dumps({'parse_status': 'err', 'output': solver_output,
     #                        'error': "Failed to parse the problem -- %s\n\n%s" % (str(e), solver_output)})
 
-    try:
+    # try:
 
-        if not os.path.isfile(solution):
-            return json.dumps({'parse_status': 'err', 'output': solver_output,
-                               'error': "Solver failed.\n\n%s" % solver_output})
+    #     if not os.path.isfile(solution):
+    #         return json.dumps({'parse_status': 'err', 'output': solver_output,
+    #                            'error': "Solver failed.\n\n%s" % solver_output})
 
-        file = open(solution, 'r')
-        plan = map(lambda x: x.strip().lower(), file.readlines())
-        file.close()
+    #     file = open(solution, 'r')
+    #     plan = map(lambda x: x.strip().lower(), file.readlines())
+    #     file.close()
 
-        if (len(plan) == 0) or (len(plan) == 1 and plan[0] == ''):
-            err_str = "Suspected timeout.\n\n%s" % solver_output
-            return json.dumps({'parse_status': 'err', 'output': solver_output, 'error': err_str})
+    #     if (len(plan) == 0) or (len(plan) == 1 and plan[0] == ''):
+    #         err_str = "Suspected timeout.\n\n%s" % solver_output
+    #         return json.dumps({'parse_status': 'err', 'output': solver_output, 'error': err_str})
 
-        if '' == plan[-1]:
-            plan = plan[:-1]
+    #     if '' == plan[-1]:
+    #         plan = plan[:-1]
 
-    except Exception:
-        return json.dumps({'parse_status': 'err', 'output': solver_output,
-                           'error': "Failed to parse plan -- %s\n\n%s" % (str(e), solver_output)})
+    # except Exception:
+    #     return json.dumps({'parse_status': 'err', 'output': solver_output,
+    #                        'error': "Failed to parse plan -- %s\n\n%s" % (str(e), solver_output)})
                            
 
     # try:
@@ -82,11 +82,12 @@ def doit(solution, outfile):
 
 if __name__ == '__main__':
 
-    # domain = sys.argv[1]
-    # problem = sys.argv[2]
+    domain = sys.argv[1]
+    problem = sys.argv[2]
     solution = sys.argv[3]
     solverout = sys.argv[4]
+    doit(domain, problem, solution, solverout)
 
-    #print doit(domain, problem, solution, solverout)
-    print(doit(solution, solverout))
+    with open(solverout, 'r') as f:
+        print(f.read())
 
