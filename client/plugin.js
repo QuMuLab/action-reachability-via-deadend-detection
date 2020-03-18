@@ -7,7 +7,7 @@ function analyzePlan() {
     $('#plannerURLInput').show();
     window.toastr.info('Running analysis...');
 
-    $.ajax( {url: "http://afternoon-thicket-57759.herokuapp.com/solve",
+    $.ajax( {url: "https://afternoon-island-98169.herokuapp.com/solve",
              type: "POST",
              contentType: 'application/json',
              data: JSON.stringify({"domain": domText, "problem": probText})})
