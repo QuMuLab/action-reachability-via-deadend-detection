@@ -15,7 +15,7 @@
     )
     
     (:action win
-        :precondition (and (p))
+        :precondition (and (p) (q))
         :effect (and (g))
     )
 )

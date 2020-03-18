@@ -1,10 +1,8 @@
 import json
+import requests, json, sys, urllib3
 from pddl_parser_2.pond.parser import Problem
 from pddl_parser_2.pond.predicate import Predicate
 from pddl_parser_2.pond.formula import Formula, And, Primitive, Forall, When, Xor, Not, Oneof, Or
-import requests, json, sys, urllib3
-
-
 
 def doit2(domain, problem):
     try:
@@ -16,6 +14,7 @@ def doit2(domain, problem):
     new_pred = Predicate("newpred", [])  
     primitive = Primitive(new_pred)
     prob.goal = primitive
+    prob.predicates.append(new_pred)
     new_eff = And([primitive])
     tmpindex = 0
 
@@ -43,21 +42,23 @@ def doit2(domain, problem):
 
 def callSolver(prob, tmpindex):
     prob.export("compiled_domain.pddl", "compiled_problem.pddl")
+
+    # check whether the action effect changes to its original value by listing all domains and problems
     domain_name = 'domain' + str(tmpindex)
     prob_name = 'problem' + str(tmpindex)
-    data = {domain_name: open("compiled_domain.pddl", 'r').read(),
-            prob_name: open("compiled_problem.pddl", 'r').read()}
-    #print(str(tmpindex) + data)
-    # check whether the action effect changes to its original value by listing all domains and problems
-    #json.dumps(data)
+    json.dumps = ({domain_name: open("compiled_domain.pddl", 'r').read(), prob_name: open("compiled_problem.pddl", 'r').read()})
+
+    data = {'domain': open("compiled_domain.pddl", 'r').read(),
+            'problem': open("compiled_problem.pddl", 'r').read()}
+
     print('export works')
 
     r = requests.post('http://solver.planning.domains/solve', verify=False, json=data)
     resp = r.json()
-    #print(resp['status'])
+    # all results are error, something wrong
     
     return resp['status']
-  
+
 
 if __name__ == '__main__':
     print("wrapper starts")

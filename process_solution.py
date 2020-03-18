@@ -86,7 +86,7 @@ if __name__ == '__main__':
     problem = sys.argv[2]
     solution = sys.argv[3]
     solverout = sys.argv[4]
-    doit(domain, problem, solution, solverout)
+    doit(solution, solverout)
 
     with open(solverout, 'r') as f:
         print(f.read())

@@ -10,6 +10,7 @@
         (p)
         (q)
         (g)
+        (newpred)
     )
     (:action toggle1
         :parameters ()
@@ -44,6 +45,7 @@
         :precondition
             (and
                 (p)
+                (q)
             )
         :effect
             (and
