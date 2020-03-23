@@ -9,7 +9,7 @@ def doit2(domain, problem):
         prob = Problem(domain, problem)
     except Exception:
         return (json.dumps({'parse_status': 'err', 
-                            'error': "Failed to parse the problem -- %s\n\n%s" % (str(Exception), prob)}))
+                            'error': "Failed to parse the problem -- %s\n\n" % (str(Exception))}))
     new_pred = Predicate("newpred", [])  
     primitive = Primitive(new_pred)
     prob.goal = primitive
@@ -32,11 +32,11 @@ def doit2(domain, problem):
         except Exception:
             
             return (json.dumps({'parse_status': 'err',
-                            'error': "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act)}))
+                            'error': "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
         
         act.effect = old_eff
     
-    return json.dumps ({'result_list': result_list})
+    return (json.dumps ({'result_list': result_list}))
 
 
 def callSolver(prob, tmpindex):
@@ -45,8 +45,6 @@ def callSolver(prob, tmpindex):
     # check whether the action effect changes to its original value by listing all domains and problems
     domain_name = 'domain' + str(tmpindex)
     prob_name = 'problem' + str(tmpindex)
-    json.dumps = ({domain_name: open("compiled_domain.pddl", 'r').read(), prob_name: open("compiled_problem.pddl", 'r').read()})
-
     data = {'domain': open("compiled_domain.pddl", 'r').read(),
             'problem': open("compiled_problem.pddl", 'r').read()}
 
