@@ -1,8 +1,13 @@
-import json
-import requests, json, sys, urllib3
-from pddl_parser_2.pond.parser import Problem
-from pddl_parser_2.pond.predicate import Predicate
-from pddl_parser_2.pond.formula import Formula, And, Primitive, Forall, When, Xor, Not, Oneof, Or
+
+ json
+
+ requests, json, sys, urllib3
+from pddl_parser_2.pond.parser 
+ Problem
+from pddl_parser_2.pond.predicate 
+ Predicate
+from pddl_parser_2.pond.formula 
+ Formula, And, Primitive, Forall, When, Xor, Not, Oneof, Or
 
 def doit2(domain, problem):
     try:
