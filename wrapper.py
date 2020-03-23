@@ -8,8 +8,7 @@ def doit2(domain, problem):
     try:
         prob = Problem(domain, problem)
     except Exception:
-            print("Failed to parse the problem -- %s\n\n%s" % (str(Exception), prob))
-            return (json.dumps({'parse_status': 'err', 
+        return (json.dumps({'parse_status': 'err', 
                             'error': "Failed to parse the problem -- %s\n\n%s" % (str(Exception), prob)}))
     new_pred = Predicate("newpred", [])  
     primitive = Primitive(new_pred)
@@ -17,6 +16,7 @@ def doit2(domain, problem):
     prob.predicates.append(new_pred)
     new_eff = And([primitive])
     tmpindex = 0
+    result_list = []
 
     for act in prob.actions:
         tmpindex += 1
@@ -24,21 +24,20 @@ def doit2(domain, problem):
         try:                       
             act.effect = new_eff
         except Exception:
-            print("The new effect doesn't work in this step-- %s\n\n%s" % (str(Exception), act))
         try:
             result_solver = callSolver(prob, tmpindex)
             #check status
-            json.dumps({'action_name': act.name, 'find_plan': result_solver})
-            print('action_name: ' + act.name + ' find_plan: ' + result_solver)
+            result_list.append([act.name, result_solver])
+            
         except Exception:
-            print("callSolver doesn't work-- %s\n\n%s" % (str(Exception), act))
+            
             return (json.dumps({'parse_status': 'err',
                             'error': "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act)}))
-        try:
-            act.effect = old_eff
-        except Exception:
-            print("The old effect doesn't return in this step-- %s\n\n%s" % (str(Exception), act))
+        
+        act.effect = old_eff
     
+    return json.dumps ({'result_list': result_list})
+
 
 def callSolver(prob, tmpindex):
     prob.export("compiled_domain.pddl", "compiled_problem.pddl")
@@ -51,7 +50,7 @@ def callSolver(prob, tmpindex):
     data = {'domain': open("compiled_domain.pddl", 'r').read(),
             'problem': open("compiled_problem.pddl", 'r').read()}
 
-    print('export works')
+    
 
     r = requests.post('http://solver.planning.domains/solve', verify=False, json=data)
     resp = r.json()
@@ -61,10 +60,10 @@ def callSolver(prob, tmpindex):
 
 
 if __name__ == '__main__':
-    print("wrapper starts")
+    
     domain = sys.argv[1]
     problem = sys.argv[2]
-    doit2(domain, problem)
+    print(doit2(domain, problem))
 
     # print the json here or in process_solution.py?
    
