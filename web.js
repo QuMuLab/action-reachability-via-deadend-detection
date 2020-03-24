@@ -158,7 +158,7 @@ app.getDomains = function(problemID, problem, domain, is_url, path, whendone) {
 };
 
 app.solve = function(domainPath, problemPath, cwd, whendone) {
-  var planPath = cwd + '/plan';
+  var planPath = cwd + '/plan.ipc';
   var logPath = cwd + '/log';
   var addPathsAndRespond = function(error, result) {
     if (result) {
