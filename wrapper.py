@@ -29,7 +29,7 @@ def doit2(domain, problem):
             return (json.dumps({'parse_status': 'err', 'error': "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
         act.effect = old_eff
     
-    return (json.dumps ({'result_list': result_list}))
+    return (json.dumps({'result_list': result_list}))
 
 
 def callSolver(prob, tmpindex):
