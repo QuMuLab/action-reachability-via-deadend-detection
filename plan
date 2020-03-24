@@ -1,3 +1,4 @@
 #!/bin/bash
 ulimit -v 500000
-python "$(dirname "$0")"/wrapper.py $1 $2
+touch $3
+python "$(dirname "$0")"/wrapper.py $1 $2 $3
