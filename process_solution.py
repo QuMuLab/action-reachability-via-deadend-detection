@@ -11,6 +11,5 @@ if __name__ == '__main__':
             print(f.read())
             
     except Exception:
-        print(json.dumps({'parse_status': 'err',
-                            'error': "json parse error-- %s\n\n" % (str(Exception)}))
+        print(json.dumps({'parse_status': 'err', 'error': "json parse error-- %s\n\n" % (str(Exception)}))
         
