@@ -53,9 +53,14 @@ if __name__ == '__main__':
         plan0 = sys.argv[3]
         resultJson = doit2(domain, problem)
         print(resultJson)
+        # f = open('log.txt', 'w')
+        # f.write(resultJson)
+        # f.close()
     except Exception:
-        print(json.dumps({'wrapper main error': "wrapper main error -- %s\n\n" % (str(Exception))}))
-         
+        print({'wrapper main error': "wrapper main error -- %s\n\n" % (str(Exception))})
+        # f = open('log.txt', 'a')
+        # f.write(json.dumps({'wrapper main error': "wrapper main error -- %s\n\n" % (str(Exception))}))
+        # f.close()
 
     # print the json here or in process_solution.py?
    
