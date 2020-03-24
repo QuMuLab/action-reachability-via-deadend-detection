@@ -50,6 +50,7 @@ if __name__ == '__main__':
     try:
         domain = sys.argv[1]
         problem = sys.argv[2]
+        plan0 = sys.argv[3]
         resultJson = doit2(domain, problem)
         print(resultJson)
     except Exception:
