@@ -167,6 +167,8 @@ app.solve = function(domainPath, problemPath, cwd, whendone) {
     }
     whendone(error, result);
   };
+  console.log("solve error: ", error)
+  console.log("solve error: ", result)
   cp.exec(__dirname + '/plan ' + domainPath + ' ' + problemPath + ' ' + planPath
        + ' > ' + logPath + ' 2>&1; '
        + 'if [ -f ' + planPath + ' ]; then echo; echo Plan:; cat ' + planPath + '; fi',
@@ -180,6 +182,8 @@ app.solve = function(domainPath, problemPath, cwd, whendone) {
 };
 
 app.parsePlan = function(domainPath, problemPath, planPath, logPath, cwd, whendone) {
+  console.log("parseplan cwd: ", cwd)
+  console.log("parseplan logPath: ", logPath)
   cp.exec('timeout 5 python ' + __dirname + '/process_solution.py '
        + domainPath + ' ' + problemPath + ' ' + planPath + ' ' + logPath,
        { cwd: cwd },

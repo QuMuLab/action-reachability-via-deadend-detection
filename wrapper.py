@@ -8,7 +8,7 @@ def doit2(domain, problem):
     try:
         prob = Problem(domain, problem)
     except Exception:
-        return (json.dumps({'parse_status': 'err', 'error': "Failed to parse the problem -- %s\n\n" % (str(Exception))}))
+        return (json.dumps({"parse_status": "err", "error": "Failed to parse the problem -- %s\n\n" % (str(Exception))}))
     new_pred = Predicate("newpred", [])  
     primitive = Primitive(new_pred)
     prob.goal = primitive
@@ -26,7 +26,7 @@ def doit2(domain, problem):
             #check status
             result_list.append([act.name, result_solver])            
         except Exception:           
-            return (json.dumps({'parse_status': 'err', 'error': "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
+            return (json.dumps({"parse_status": "err", "error": "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
         act.effect = old_eff
     
     return (json.dumps({'result_list': result_list}))
@@ -53,18 +53,6 @@ if __name__ == '__main__':
         plan0 = sys.argv[3]
         resultJson = doit2(domain, problem)
         print(resultJson)
-        # f = open('log.txt', 'w')
-        # f.write(resultJson)
-        # f.close()
+
     except Exception:
-        print({'wrapper main error': "wrapper main error -- %s\n\n" % (str(Exception))})
-        # f = open('log.txt', 'a')
-        # f.write(json.dumps({'wrapper main error': "wrapper main error -- %s\n\n" % (str(Exception))}))
-        # f.close()
-
-    # print the json here or in process_solution.py?
-   
-
-
-
-
+        print({"wrapper main error": "wrapper main error -- %s\n\n" % (str(Exception))})
