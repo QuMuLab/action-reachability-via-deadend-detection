@@ -160,6 +160,7 @@ app.getDomains = function(problemID, problem, domain, is_url, path, whendone) {
 app.solve = function(domainPath, problemPath, cwd, whendone) {
   var planPath = cwd + '/plan';
   var logPath = cwd + '/log';
+  console.log("solve cwd: ", cwd)
   var addPathsAndRespond = function(error, result) {
     if (result) {
       result['planPath'] = planPath;
