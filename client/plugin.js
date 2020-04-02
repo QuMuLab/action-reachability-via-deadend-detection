@@ -15,6 +15,7 @@ function analyzePlan() {
                 console.log('yea')
                 console.log("status: ", res.status)
                 console.log("result: ", res["result"])
+                console.log("result output: ", res.output)
                 console.log("server sucesses", res)
                 if (res.status === 'ok')
                     window.toastr.success('Analysis complete!');
