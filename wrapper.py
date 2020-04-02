@@ -55,4 +55,4 @@ if __name__ == '__main__':
         print(resultJson)
 
     except Exception:
-        print({"wrapper main error": "wrapper main error -- %s\n\n" % (str(Exception))})
+        print({"parse_status": "err", "error": "wrapper main error -- %s\n\n" % (str(Exception))})

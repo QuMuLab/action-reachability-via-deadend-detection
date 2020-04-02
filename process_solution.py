@@ -12,5 +12,5 @@ if __name__ == '__main__':
         f.close()
             
     except Exception:
-        print({"parse_status": "err", "error": "json parse error-- %s\n\n" % (str(Exception))})
+        print({"parse_status": "err", "error": "json parse error-- %s\n" % (str(Exception))})
         
