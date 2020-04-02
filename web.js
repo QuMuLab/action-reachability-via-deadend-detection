@@ -183,19 +183,22 @@ app.solve = function(domainPath, problemPath, cwd, whendone) {
 };
 
 app.parsePlan = function(domainPath, problemPath, planPath, logPath, cwd, whendone) {
-  console.log("parseplan cwd: ")
-  console.log("parseplan logPath: ")
+  console.log("parseplan cwd: ", cwd)
+  console.log("parseplan logPath: ", logPath)
   cp.exec('timeout 5 python ' + __dirname + '/process_solution.py '
        + domainPath + ' ' + problemPath + ' ' + planPath + ' ' + logPath,
        { cwd: cwd },
   function _processStopped(error, stdout, stderr) {
     if (error)
       whendone(error, null);
+      console.log("parseplan error");
     var result = JSON.parse(stdout);
     if (result.parse_status === 'err')
       whendone(result, null);
+      
     else
       whendone(null, result);
+      console.log("parseplan result done");
   });
 };
 
