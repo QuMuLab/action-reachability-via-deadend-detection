@@ -1,5 +1,4 @@
-
-import json, requests, json, sys
+import requests, json, sys
 from pddl_parser_2.pond.parser import Problem
 from pddl_parser_2.pond.predicate import Predicate
 from pddl_parser_2.pond.formula import Formula, And, Primitive, Forall, When, Xor, Not, Oneof, Or
