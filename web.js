@@ -191,8 +191,10 @@ app.parsePlan = function(domainPath, problemPath, planPath, logPath, cwd, whendo
   function _processStopped(error, stdout, stderr) {
     if (error)
       whendone(error, null);
-      console.log("parseplan error");
+      console.log("parseplan error: ", error);
+    console.log("parseplan stdout: ", stdout);
     var result = JSON.parse(stdout);
+    console.log("parseplan json error");
     if (result.parse_status === 'err')
       whendone(result, null);
       
