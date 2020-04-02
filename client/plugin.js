@@ -12,17 +12,13 @@ function analyzePlan() {
              contentType: 'application/json',
              data: JSON.stringify({"domain": domText, "problem": probText})})
         .done(function (res) {
-                console.log('yea')
-                console.log("status: ", res.status)
-                console.log("result: ", res["result"])
-                console.log("result output: ", res.output)
                 console.log("server sucesses", res)
                 if (res.status === 'ok')
                     window.toastr.success('Analysis complete!');
                 else
                     window.toastr.error('Problem with the server.');
 
-                showAnalysis(res["result"]);
+                showAnalysis(res.result.output);
 
             }).fail(function (res) {
                 window.toastr.error('Error: Malformed URL?');
