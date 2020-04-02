@@ -14,7 +14,7 @@ def doit2(domain, problem):
     prob.predicates.append(new_pred)
     new_eff = And([primitive])
     tmpindex = 0
-    result_list = []
+    result_bigstring = ""
 
     for act in prob.actions:
         tmpindex += 1
@@ -23,12 +23,13 @@ def doit2(domain, problem):
         try:
             result_solver = callSolver(prob, tmpindex)
             #check status
-            result_list.append([act.name, result_solver])            
+            output_string = act.name + " - " + result_solver + "  "
+            result_bigstring += output_string
         except Exception:           
             return (json.dumps({"parse_status": "err", "error": "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
         act.effect = old_eff
     
-    return (json.dumps({"output": result_list}))
+    return (json.dumps({"output": result_bigstring}))
 
 
 def callSolver(prob, tmpindex):
