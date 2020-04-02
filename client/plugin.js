@@ -13,9 +13,10 @@ function analyzePlan() {
              data: JSON.stringify({"domain": domText, "problem": probText})})
         .done(function (res) {
                 console.log("server sucesses", res)
+                console.log('yea')
                 console.log("status: ", res.status)
-                console.log("result: ", res['result']['output'])
-                if (res.status == "ok")
+                console.log("result: ", res["result"])
+                if (res.status === 'ok')
                     window.toastr.success('Analysis complete!');
                 else
                     window.toastr.error('Problem with the server.');
