@@ -23,9 +23,9 @@ def doit2(domain, problem):
         try:
             result_solver = callSolver(prob, tmpindex)
             #check status
-            output_string = act.name + " - " + result_solver + "  "
+            output_string = act.name + " - " + result_solver + "\n"
             result_bigstring += output_string
-        except Exception:           
+        except Exception:
             return (json.dumps({"parse_status": "err", "error": "The action is not usable in this step-- %s\n\n%s" % (str(Exception), act.name)}))
         act.effect = old_eff
     
