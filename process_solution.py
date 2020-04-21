@@ -8,7 +8,7 @@ if __name__ == '__main__':
         solution = sys.argv[3]
         solverout = sys.argv[4]
         f = open(solverout, 'r')
-        print(f.read())
+        print(json.dumps(f.read()))
         f.close()
             
     except Exception:
