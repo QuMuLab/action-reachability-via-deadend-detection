@@ -8,9 +8,9 @@ if __name__ == '__main__':
         solution = sys.argv[3]
         solverout = sys.argv[4]
         f = open(solverout, 'r')
-        print(json.dumps(f.read()))
+        print(f.read())
         f.close()
-            
+
     except Exception:
         print({"parse_status": "err", "error": "json parse error-- %s\n" % (str(Exception))})
-        
+
