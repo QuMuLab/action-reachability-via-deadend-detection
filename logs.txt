@@ -1,1 +1,0 @@
-{"result_list": [["toggle1", "ok"], ["toggle2", "ok"], ["win", "error"]]}
